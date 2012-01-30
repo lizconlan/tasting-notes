@@ -1,18 +1,26 @@
 %h2= @event.name
 
-%p
+%p.details
   =@event.location
   %br
   =@event.date
 
 - if current_user.events.include?(@event)  
   - @scorecard.ratings.each do |rating|
-    %p= rating.drink.name
-    %p= rating.drink.brewery_name
-    %p
-      %textarea{:cols => 40, :rows => 6, :value => rating.notes}
-    %p
-      %input{:value => rating.score}
+    %form{:action => "/event/update/#{@event.id}", :method => "post"}
+      %h3= rating.drink.name
+      %span= rating.drink.brewery_name
+      %input{:type => "hidden", :name => "rating", :value => rating.id}
+      %p
+        %label{:for => "notes"} Notes
+        %br
+        %textarea{:cols => 30, :rows => 6, :value => rating.notes, :id => "notes", :name => "notes"}
+          = rating.notes
+      %p
+        %label{:for => "score"} Score
+        %input{:value => rating.score, :id => "score", :name => "score"}
+      %p
+        %input{:type => "submit", :value => "Save"}
 - else
   %a{:href => "/events/#{@event.id}/watch"} Watch event
     

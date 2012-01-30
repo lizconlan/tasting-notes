@@ -2,5 +2,18 @@
 %html
   %head
     %title Tasting Notes
+    %link{:type => "text/css", :rel => "stylesheet", :href => "/styles/style.css"}
+    %meta{:name => "viewport", :content => "width=device-width"}
   %body
-    = yield
+    %nav
+      - if logged_in?
+        %a{:href => "/logout"} Log Out
+      - else
+        %a{:href => "/login"} Log In
+        %a{:href => "/signup"} Sign Up
+    - unless request.path_info == "/login" or request.path_info == "/signup"
+      %h1= @title || "Tasting Notes"
+      %article
+        = yield
+    - else
+      = yield

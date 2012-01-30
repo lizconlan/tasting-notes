@@ -18,11 +18,15 @@ enable :sessions
 use Rack::Flash
 use Rack::Session::Cookie, :secret => ENV['cookie_secret'] || YAML::load(File.read("config/secrets.yml"))[:cookie]
 
+get "/styles/style.css" do
+  sass :style
+end
+
 get "/" do
   if logged_in?
     redirect "/events"
   else
-    haml "= render_login_logout"
+    haml :index
   end
 end
 
@@ -138,4 +142,13 @@ get "/event/:id" do
     end
   end
   haml :view_event
+end
+
+post "/event/update/:id" do
+  rating_id = params[:rating]
+  rating = Rating.find(rating_id)
+  rating.notes = params[:notes]
+  rating.score = params[:score]
+  rating.save
+  redirect "/event/#{params[:id]}"
 end
