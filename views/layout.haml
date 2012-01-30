@@ -12,7 +12,8 @@
         %a{:href => "/login"} Log In
         %a{:href => "/signup"} Sign Up
     - unless request.path_info == "/login" or request.path_info == "/signup"
-      %h1= @title || "Tasting Notes"
+      %h1 
+        %a{:href => "/"} Tasting Notes
       %article
         = yield
     - else

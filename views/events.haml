@@ -19,7 +19,7 @@
 %h2 Events I am hosting
 - if current_user.hosted_events
   %ul
-  - current_user.hosted_events.each do |event|
-    %li
-      %a{:href => "/events/edit/#{event.id}"}= event.name
+    - current_user.hosted_events.each do |event|
+      %li
+        %a{:href => "/events/edit/#{event.id}"}= event.name
 %a{:href => "/events/add"} Create new event
