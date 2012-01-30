@@ -1,0 +1,27 @@
+%h2 Edit Event
+
+- if flash[:error]
+  %ul.warn= flash[:error]
+
+%form{:method => "post"}
+  %p 
+    %label{:for => "name"} Name
+    %input{:name => "name", :id => "name", :value => @event.name }
+  %p
+    %label{:for => "location"} Location
+    %input{:name => "location", :id => "location", :value => @event.location }
+  %p
+    %label{:for => "date"} Date
+    %input{:name => "date", :id => "date", :value => @event.date }
+  %p
+    Beers:
+    - unless @event.drinks.empty?
+      %ul
+        - @event.drinks.each do |drink|
+          %li= drink.name
+    - else
+      No beers added yet
+  %p
+    %a{:href => "/events/edit/#{@event.id}/find_beer"} Add some beer
+  %p
+    %input{:type => "submit", :value => "save"}

@@ -1,0 +1,17 @@
+%h2 New Event
+
+- if flash[:error]
+  %ul.warn= flash[:error]
+
+%form{:method => "post"}
+  %p 
+    %label{:for => "name"} Name
+    %input{:name => "name", :id => "name", :value => params["name"] || nil }
+  %p
+    %label{:for => "location"} Location
+    %input{:name => "location", :id => "location", :value => params["location"] || nil }
+  %p
+    %label{:for => "date"} Date
+    %input{:name => "date", :id => "date", :value => params["date"] || nil }
+  %p
+    %input{:type => "submit", :value => "save"}

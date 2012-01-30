@@ -1,0 +1,13 @@
+%h2 Find beer
+
+%form{:method => "post"}
+  %p
+    %label{:for=>"brewery"} Brewery name
+    %input{:name => "brewery", :id => "brewery", :value => params["brewery"] || nil }
+  %p
+    %input{:type => "submit", :value => "search"}
+    
+- if @results
+  - @results.each do |result|
+    %p
+      %a{:href => "/events/edit/#{params[:id]}/find_beer/#{result["id"]}"}= result["name"]

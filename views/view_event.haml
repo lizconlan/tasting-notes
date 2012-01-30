@@ -1,0 +1,15 @@
+%h2= @event.name
+
+%p
+  =@event.location
+  %br
+  =@event.date
+  
+- @scorecard.ratings.each do |rating|
+  %p= rating.drink.name
+  %p= rating.drink.brewery_name
+  %p
+    %textarea{:cols => 40, :rows => 6, :value => rating.notes}
+  %p
+    %input{:value => rating.score}
+    

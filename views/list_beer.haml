@@ -1,0 +1,20 @@
+%h2 Beer Choices
+
+%h3= @brewery_info["name"]
+
+- if @beers.empty?
+  %p
+    "No beers available from this brewery"
+- else
+  %form{:method => "post", :action => "/events/edit/#{params[:id]}/_add_beer"}
+    %input{:type => "hidden", :name => "event_id", :value => params[:event_id]}
+    %input{:type => "hidden", :name => "brewery_id", :value => params[:brewery_id]}
+    %input{:type => "hidden", :name => "brewery_name", :value => @brewery_info["name"]}
+    - @beers.each do |beer|
+      %p
+        %input{:type => "checkbox", :id => beer["id"], :name => "beer_#{beer["id"]}"}
+        - label = beer["name"]
+        - label = "#{label} (#{beer["metadata"]["abv"]}%)" unless beer["metadata"]["abv"].empty?
+        %label{:for => "beer_#{beer["id"]}"}= label
+    %p
+      %input{:type => "submit", :value => "Save"}
