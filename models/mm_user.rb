@@ -3,7 +3,7 @@ require 'mongo_mapper'
 class MmUser
   include MongoMapper::Document
   
-  many :events, :in => :event_ids
+  many :events
   many :scorecards, :in => :scorecard_ids
   
   key :event_ids, Array
@@ -15,5 +15,10 @@ class MmUser
 
   def attended_events
     events.all
+  end
+  
+  def watch_event(event)
+    events << event
+    self.save
   end
 end

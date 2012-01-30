@@ -5,6 +5,17 @@
     %li
       %a{:href => "/event/#{event.id}"}= event.name
 
+%h2 Search for more events
+%form{:method => "get"}
+  %input{:name => "q", :id => "q", :value => params[:q]}
+  %input{:type => "submit", :value => "Search"}
+  
+- if @results
+  %ul
+  - @results.each do |result|
+    %li
+      %a{:href => "/event/#{result.id}"}= result.name
+
 %h2 Events I am hosting
 - if current_user.hosted_events
   %ul

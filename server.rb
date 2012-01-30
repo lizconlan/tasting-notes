@@ -27,6 +27,10 @@ get "/" do
 end
 
 get "/events" do
+  q = params[:q]
+  if q and q.length > 1
+    @results = Event.find_all_by_name(/#{q}/)
+  end
   haml :events
 end
 
@@ -114,13 +118,24 @@ get "/events/edit/:id" do
   haml :edit_event
 end
 
+get "/events/:id/watch" do
+  event = Event.find(params[:id])
+  current_user.watch_event(event)
+  event.attendee_ids << current_user.id
+  event.save
+  redirect "/events"
+end
+
 get "/event/:id" do
   @event = Event.find(params[:id])
-  @scorecard = Scorecard.find_by_mm_user_id_and_event_id(current_user.id, @event.id)
-  if @scorecard
-    @scorecard.update_card()
-  else
-    @scorecard = Scorecard.new(current_user, @event)
+  
+  if current_user.events.include?(@event)
+    @scorecard = Scorecard.find_by_mm_user_id_and_event_id(current_user.id, @event.id)
+    if @scorecard
+      @scorecard.update_card()
+    else
+      @scorecard = Scorecard.new(current_user, @event)
+    end
   end
   haml :view_event
 end
