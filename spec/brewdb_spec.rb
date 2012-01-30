@@ -1,6 +1,6 @@
 require 'rspec'
-require 'spec_helper'
-require 'lib/brew_db'
+require './spec_helper'
+require './lib/brew_db'
  
 describe BrewDB do
   before :each do
