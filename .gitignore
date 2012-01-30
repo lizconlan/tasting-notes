@@ -1,3 +1,4 @@
 rspec.html
 config/*.yml
 coverage
+.sass-cache
