@@ -14,7 +14,7 @@ Copy <code>config/secrets.yml.example</code> to <code>config/secrets.yml</code> 
 
 <code>bundle install</code>
 
-## Future
+## ToDo
 
 Would be great to add other types of drink and allow for food items
 
