@@ -21,3 +21,7 @@ Would be great to add other types of drink and allow for food items
 Allow sharing (on an opt-in basis) of tasting notes
 
 Better use and storage of location data with the ability to search for events on a location basis
+
+Should be able to unwatch/delete an event
+
+Better layout for events to handle the scenario where there are past, present and future events (event archiving?)
