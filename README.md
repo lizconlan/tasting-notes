@@ -11,3 +11,11 @@ Copy <code>config/brewdb.yml.example</code> to <code>config/brewdb.yml</code> an
 Copy <code>config/secrets.yml.example</code> to <code>config/secrets.yml</code> and provide a random string for the session cookie secret and your MongoDB connection string
 
 <code>bundle install</code>
+
+## Future
+
+Would be great to add other types of drink and allow for food items
+
+Allow sharing (on an opt-in basis) of tasting notes
+
+Better use and storage of location data with the ability to search for events on a location basis
