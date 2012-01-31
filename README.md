@@ -4,6 +4,8 @@ A prototype app for making tasting notes about beers while you are out at events
 
 Uses MongoDB for the storage layer and the BrewDB API for the beer data
 
+Built with ruby 1.9.2 so tests must be run with simplecov instead of rcov
+
 ## Install
 
 Copy <code>config/brewdb.yml.example</code> to <code>config/brewdb.yml</code> and add your API key
