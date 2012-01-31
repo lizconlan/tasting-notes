@@ -33,7 +33,7 @@ end
 get "/events" do
   q = params[:q]
   if q and q.length > 1
-    @results = Event.find_all_by_name(/#{q}/)
+    @results = Event.find_all_by_name(/#{q}/i)
   end
   haml :events
 end
