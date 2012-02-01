@@ -18,7 +18,9 @@ Copy <code>config/secrets.yml.example</code> to <code>config/secrets.yml</code> 
 
 It was supposed to look better than this (but it does alright on an iPhone). It was supposed to have brewery and event logos. (But it does at least look tolerably like a pocketbook if you squint a bit and give it the benefit of the doubt.) It was supposed to have some whizzy AJAX-y cleverness, possibly with added local storage goodness. It was supposed to have much more comprehensive test coverage. I ran out of time and started cutting corners in order to get something up other than a README file saying "I wanted to make this but never got around to it"
 
-It will have better data as I intend to pour some more UK data into BrewDB and set up some more realistic examples before the deadline expires
+I would have loved to have built this using the Untappd API but didn't sort my API key out in time. The guys at BrewDB have been great but I would have lover to try my hand at integrating with the social, location and OAuth login stuff at Untappd. My own fault entirely for not being quicker to get things started (and frankly for not pestering people enough or submitting a particularly well thought out key application/pitch)
+
+The data side will slowly improve though as I intend to pour some more UK data into BrewDB and set up some more realistic examples, hopefully before the deadline expires
 
 ## ToDo
 
